@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Documentación</title>
+	<meta charset="utf-8" />
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1,"/>
+</head>
+<body>
+
+	<h1 style="text-align: center">Documentación del Inventario</h1>
+	<br>
+	<div style="padding-left: 10%">
+		<div>
+			<h2>Detalles Técnicos</h2>
+			<ul>
+			    <li>PHP 5.6</li>
+			    <li>MYSQL 5.7</li>
+			    <li>Javascript</li>
+			    <li>HTML</li>
+			    <li>Css3</li>
+			</ul>
+		</div>
+		<br>
+		<div>
+			<h2>Módulos del Sistema</h2>
+			<ul>
+			    <li>
+			    	<b>INICIO:</b>
+			    	<p>Este módulo muestra datos relevantes de los datos registrados del sistema.</p>
+			    </li>
+			    <li>
+			    	<b>NUEVO PRODUCTO:</b>
+			    	<p>Formulario para el registro de productos en el sistema</p>
+			    </li>
+			    <li>
+			    	<b>PRODUCTOS:</b>
+			    	<p>Listado de los productos del sistema, permite las opciones de <b>VER</b>, <b>EDITAR</b> y <b>BORRAR</b> cada registro.</p>
+			    	<p>Tambien tiene opciones especiales para <b>AGREGAR</b> o <b>RESTAR</b> unidades de los productos que seleccione con los CHECKBOX.</p>
+			    	<p>El botón llamado <b>BORRAR PRODUCTOS</b>, permite eliminar uno, varios o todos los prpductos al mismo tiempo, selecionados con los CHECKBOX.</p>
+			    </li>
+			    <li>
+			    	<b>SUMAR PRODUCTO:</b>
+			    	<p>Permite ver un listado de los productos registrados. Esta sección tiene la funcionalidad de sumar al stock nueva cantidad de elementos a los productos.</p>
+			    </li>
+			    <li>
+			    	<b>RESTAR PRODUCTO:</b>
+			    	<p>Permite ver un listado de los productos registrados. Esta sección tiene la funcionalidad de restar al stock elementos a los productos. No puede restarse una cantidad superior a la cantidad existente</p>
+			    </li>
+			    <li>
+			    	<b>RESTAR PRODUCTO:</b>
+			    	<p>Listado de los categorpias registradas en el sistema; permite las opciones de <b>VER</b>, <b>EDITAR</b> y <b>BORRAR</b> cada registro.</p>
+			    </li>
+			    <li>
+			    	<b>USUARIOS:</b>
+			    	<p>Listado de los usuarios registrados en el sistema; permite las opciones de <b>VER</b>, <b>CREAR</b>, <b>EDITAR</b> y <b>BORRAR</b> cada registro.</p>
+			    	<h4>Roles de los Usuarios: Cada usuario registrado, tiene un rol asignado. Cada rol tiene unos permisos distintos de uso en el sistema.</h4>
+			    	<ul>
+			    	    <li><b>Administrador:</b> tiene permisos absolutos del sistema, puede usar cada módulo y funcionalidad existente.</li>
+			    	    <li><b>Supervidor General:</b> tiene permisos absolutos del sistema, puede usar cada módulo y funcionalidad existente; pero solo puede ver los usuarios(supervidores y empleados) creados por El, y no por Supervisores y Supervisores Generales.</li>
+			    	    <li><b>Supervidor:</b> No puede ver el módulo <b>INICIO</b>, y en el registro de usuarios únicamente puede registrar empleados. No puede ver el listado de empleados de otros supervisores. Puede utilizart el resto de los módulos normalmente.</li>
+			    	    <li><b>Empleado: </b> Este usuario puede registrar productos, agregar y sacar registros del stock de dichos productos, registrar categorías y editar sus datos de usuarios.</li>
+			    	</ul>
+			    </li>
+			</ul>
+		</div>
+	</div>
+</body>
+</html>
