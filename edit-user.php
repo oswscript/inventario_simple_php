@@ -7,7 +7,7 @@ if($_session->isLogged() == false)
 
 // User Role. Page only for Admins and General Supervisors (1/2)
 $role = $_session->get_user_role();
-if($role != 1 && $role != 2)
+if($role != 1 && $role != 2 && $role == 3)
 	header('Location: users.php');
 
 $_page = 11;

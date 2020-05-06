@@ -1,17 +1,14 @@
 <?php
 session_start();
 
-/************	You can edit details starting from here ************/
-$dbhost = 'localhost';		// Write your MySQL host here.
-$dbuser = 'root';	// Write your MySQL User here.
-$dbpass = '';	// Write your MySQL Password here.
-$dbname = 'invento';		// Write the MySQL Database where you want to install Invento
+/************	Configuracion de coneccion de BD ************/
+$dbhost = 'localhost';	
+$dbuser = 'root';	
+$dbpass = '';
+$dbname = 'inventario_simple_1';	
 
 
 /************ DON'T EDIT NOTHING BELOW ************/
-
-
-
 
 if(!isset($noredir) && $dbhost == 'localhost' && $dbuser == 'MYSQL USERNAME' && $dbpass == 'MYSQL PASSWORD')
 	header('Location:install.php');

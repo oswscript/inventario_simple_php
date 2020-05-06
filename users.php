@@ -154,14 +154,14 @@ if(isset($_GET['search']) && ($_GET['search'] != '')){
 						<td class="hover" data-type="date" style="font-size: 9pt"><?php echo $user->date_added; ?></td>
 						<td>
 							<?php
-							if($role == 1 || $role == 2)
+							if($role == 1 || $role == 2 || $role == 3)
 								echo '<a style="background-color: #8CCBFF; padding:4%; font-weight:bold;" href="edit-user.php?userid='.$user->id.'" name="c3" title="Editar usuario"><i class="fa fa-pencil"></i>Editar</a>';
 							?>
 							<?php /*
 							<a href="logs.php?userid=<?php echo $user->id; ?>" name="c4" title="Log of this user"><i class="fa fa-file-text-o"></i></a>
 							*/?>
 							<?php
-							if($role == 1 || $role == 2)
+							if($role == 1 || $role == 2 || $role == 3)
 								echo '<a style="background-color: #FF8989; padding:4%; font-weight:bold;" href="" name="c5" title="Borrar usuario"><i class="fa fa-close"></i>Borrar</a>';
 							?>
 						</td>
