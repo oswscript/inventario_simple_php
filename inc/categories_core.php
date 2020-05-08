@@ -23,7 +23,7 @@ class Categories {
 		return $q;
 	}
 	//buscar categoria especifica
-	public function search($string, $page, $items_per_page) {
+	/*public function search($string, $page, $items_per_page) {
 		$s = "%$string%";
 		
 		if($page == 0 || $page == 1)
@@ -34,6 +34,22 @@ class Categories {
 
 		$prepared = $this->prepare("SELECT * FROM invento_categories WHERE id LIKE ? OR name LIKE ? OR place LIKE ? OR descrp LIKE ? OR date_added LIKE ? ORDER BY id DESC LIMIT $x,$y", 'search()');
 		$this->bind_param($prepared->bind_param('sssss', $s, $s, $s, $s, $s), 'search()');
+		$this->execute($prepared, 'search()');
+		
+		$result = $prepared->get_result();
+		return $result;
+	}*/
+	public function search($string, $page, $items_per_page) {
+		$s = "%$string%";
+		
+		if($page == 0 || $page == 1)
+			$x = 0;
+		else
+			$x = ($items_per_page * ($page-1));
+		$y = $items_per_page;
+
+		$prepared = $this->prepare("SELECT * FROM invento_categories WHERE name = ? ORDER BY id DESC LIMIT $x,$y", 'search()');
+		$this->bind_param($prepared->bind_param('s', $string), 'search()');
 		$this->execute($prepared, 'search()');
 		
 		$result = $prepared->get_result();

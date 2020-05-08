@@ -24,8 +24,8 @@ if($user->role == 1 || $user->role == 2) {
 }
 
 // Only admins and general supervisors can view details of supervisors and employees
-if($user->role == 3 || $user->role == 4) {
-	if($role != 1 && $role != 2)
+if($user->role == 4) {
+	if($role != 1 && $role != 2 && $role != 3)
 		header('Location: users.php');
 }
 

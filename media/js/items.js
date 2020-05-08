@@ -279,7 +279,6 @@ $('document').ready(function() {
 		evt.preventDefault();
 		$('.loader').fadeIn(200);
 		var val = $(this).children('input[name=search]').val();
-		
 		if(val == '') {
 			$('.loader').fadeOut(200);
 			alert('Por favor escriba su búsqueda');
@@ -290,6 +289,7 @@ $('document').ready(function() {
 			'act':'1',
 			'val':val
 		}, function(data) {
+			console.log(data);
 			if(data == '3') {
 				location.href = 'items.php?search='+encodeURIComponent(val);
 				$('.loader').fadeOut(200);

@@ -33,7 +33,7 @@ class Users {
 		return $q;
 	}
 	//Busqueda de usuario
-	public function search($string, $page, $items_per_page) {
+	/*public function search($string, $page, $items_per_page) {
 		$s = "%$string%";
 		if($page == 0 || $page == 1)
 			$x = 0;
@@ -52,6 +52,31 @@ class Users {
 			return false;
 		
 		$this->bind_param($prepared->bind_param('sssssii', $s, $s, $s, $s, $s, $x, $y), 'search()');
+		$this->execute($prepared, 'search()');
+		
+		$result = $prepared->get_result();
+		return $result;
+	}*/
+
+	public function search($string, $page, $items_per_page) {
+		$s = "%$string%";
+		if($page == 0 || $page == 1)
+			$x = 0;
+		else
+			$x = ($items_per_page * ($page-1));
+		$y = $items_per_page;
+		
+		$role = $this->session->get_user_role();
+		if($role == 1)
+			$prepared = $this->prepare("SELECT * FROM invento_users WHERE dni = ? ORDER BY id DESC LIMIT ?,?", 'search()');
+		elseif($role == 2)
+			$prepared = $this->prepare("SELECT * FROM invento_users WHERE (role=3 OR role=4) AND (dni = ?) ORDER BY id DESC LIMIT ?,?", 'search()');
+		elseif($role == 3)
+			$prepared = $this->prepare("SELECT * FROM invento_users WHERE (role=4) AND (dni = ?) ORDER BY id DESC LIMIT ?,?", 'search()');
+		else
+			return false;
+		
+		$this->bind_param($prepared->bind_param('sii', $string, $x, $y), 'search()');
 		$this->execute($prepared, 'search()');
 		
 		$result = $prepared->get_result();

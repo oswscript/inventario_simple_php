@@ -55,7 +55,7 @@ class Items {
 		return false;
 	}
 	//buscar productos por cualquier parametro
-	public function search($string, $page, $items_per_page) {
+	/*public function search($string, $page, $items_per_page) {
 		$s = "%$string%";
 		if($page == 0 || $page == 1)
 			$x = 0;
@@ -65,6 +65,22 @@ class Items {
 		
 		$prepared = $this->prepare("SELECT * FROM invento_items WHERE id LIKE ? OR name LIKE ? OR code LIKE ? OR descrp LIKE ? OR date_added LIKE ? OR category IN (SELECT id FROM invento_categories WHERE name LIKE ?) ORDER BY id DESC LIMIT $x,$y", 'search()');
 		$this->bind_param($prepared->bind_param('ssssss', $s, $s, $s, $s, $s, $s), 'search()');
+		$this->execute($prepared, 'search()');
+		
+		$result = $prepared->get_result();
+		return $result;
+	}
+*/
+	public function search($string, $page, $items_per_page) {
+		$s = "%$string%";
+		if($page == 0 || $page == 1)
+			$x = 0;
+		else
+			$x = ($items_per_page * ($page-1));
+		$y = $items_per_page;
+		
+		$prepared = $this->prepare("SELECT * FROM invento_items WHERE code = ? ORDER BY id DESC LIMIT $x,$y", 'search()');
+		$this->bind_param($prepared->bind_param('s', $string), 'search()');
 		$this->execute($prepared, 'search()');
 		
 		$result = $prepared->get_result();

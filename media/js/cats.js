@@ -44,12 +44,12 @@ $('document').ready(function() {
 			}
 			if(data == '2') {
 				$('.loader').fadeOut(200);
-				alert('No items matched your search');
+				alert('Ninguna categoría coincide con tu búsqueda');
 				return false;
 			}
 			
 			$('.loader').fadeOut(200);
-			alert('Something went wrong. Please try again');
+			alert('Algo va mal, vuelva a intentar!');
 			return false;
 		});
 	});
