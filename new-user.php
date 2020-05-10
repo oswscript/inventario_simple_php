@@ -8,6 +8,8 @@ if($_session->isLogged() == false)
 $_page = 10;
 
 $role = $_session->get_user_role();
+$id_user_active = $_session->get_user_id();
+
 if($role == 4)
 	header('Location: home.php');
 
@@ -27,6 +29,7 @@ if(isset($_POST['act'])) {
 		$email = $_POST['email'];
 		$role = $_POST['role'];
 		$date = date("m/d/Y");
+		$id_user = $id_user_active;
 		
 		if($role != 1 && $role != 2 && $role != 3 && $role != 4)
 			die('wrong');
@@ -61,7 +64,7 @@ if(isset($_POST['act'])) {
 				die('wrong');
 		}
 		
-		if($_users->new_user($name, $dni, $username, $password1, $email, $role, date("m/d/Y")) == true)
+		if($_users->new_user($name, $dni, $username, $password1, $email, $role, $id_user, date("m/d/Y")) == true)
 			die('1');
 		die('wrong');
 	}

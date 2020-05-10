@@ -75,12 +75,14 @@ if($_users->userid_exists($userid) == false)
 						<div class="select-holder">
 							<i class="fa fa-caret-down"></i>
 							<select name="euser-role">
-								<?php if($userd->role == 1){  ?>
+								<?php if($role == 1){  ?>
 								<option value="1"<?php if($userd->role == 1) echo ' selected'; ?>>Administrador</option>
 								<option value="2"<?php if($userd->role == 2) echo ' selected'; ?>>Supervisor General</option>
 								
 								<?php } ?>
+								<?php if($role == 1 || $role == 2){  ?>
 								<option value="3"<?php if($userd->role == 3) echo ' selected'; ?>>Supervisor</option>
+								<?php } ?>
 								<option value="4"<?php if($userd->role == 4) echo ' selected'; ?>>Empleado</option>
 							</select>
 						</div>

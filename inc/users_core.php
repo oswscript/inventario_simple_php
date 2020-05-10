@@ -21,12 +21,14 @@ class Users {
 		// Supervisor = Empleados
 		// Empleados = Nada
 		$role = $this->session->get_user_role();
+		$id_user_active = $this->session->get_user_id();
+
 		if($role == 1)
 			$q = $this->query("SELECT * FROM invento_users ORDER BY id DESC LIMIT $x,$y", 'get_users()');
 		elseif($role == 2)
 			$q = $this->query("SELECT * FROM invento_users WHERE role=3 OR role=4 ORDER BY id DESC LIMIT $x,$y", 'get_users()');
 		elseif($role == 3)
-			$q = $this->query("SELECT * FROM invento_users WHERE role=4 ORDER BY id DESC LIMIT $x,$y", 'get_users()');
+			$q = $this->query("SELECT * FROM invento_users WHERE role=4 AND supervisor_id = '".$id_user_active."' ORDER BY id DESC LIMIT $x,$y", 'get_users()');
 		else
 			return false;
 		
@@ -127,9 +129,9 @@ class Users {
 		return true;
 	}
 	//nuevo usuario
-	public function new_user($name, $dni, $username, $password, $email, $role, $date) {
-		$prepared = $this->prepare("INSERT INTO invento_users(username,dni,password,name,email,role,date_added) VALUES(?,?,?,?,?,?,?)", 'new_user()');
-		$this->bind_param($prepared->bind_param('sssssis', $username, $dni, $password, $name, $email, $role, $date), 'delete_user()');
+	public function new_user($name, $dni, $username, $password, $email, $role, $id_user_active, $date) {
+		$prepared = $this->prepare("INSERT INTO invento_users(username,dni,password,name,email,role,supervisor_id,date_added) VALUES(?,?,?,?,?,?,?,?)", 'new_user()');
+		$this->bind_param($prepared->bind_param('sssssiss', $username, $dni, $password, $name, $email, $role, $id_user_active, $date), 'delete_user()');
 		$this->execute($prepared, 'new_user()');
 		return true;
 	}

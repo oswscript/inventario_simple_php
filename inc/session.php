@@ -6,7 +6,7 @@ class Session {
 	
 	public function __construct($m) { $this->mysqli = $m; }
 	
-	//SI LO GEO
+	//SI LOGEO
 	public function isLogged() {
 		if(!isset($_SESSION['invento_logged']) || !is_array($_SESSION['invento_logged']))
 			return false;
